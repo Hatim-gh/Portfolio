@@ -1,21 +1,240 @@
-html {
-  scroll-behavior: smooth;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
+@layer base {
+  :root {
+    --background: 222 32% 8%;
+    --foreground: 210 40% 98%;
+    --card: 222 28% 11%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222 28% 11%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 223 67% 61%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 221 24% 18%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 221 24% 18%;
+    --muted-foreground: 217 16% 68%;
+    --accent: 223 67% 61%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 221 24% 20%;
+    --input: 221 24% 20%;
+    --ring: 223 67% 61%;
+    --radius: 1rem;
+    --page-bg:
+      radial-gradient(circle at top, rgba(99, 123, 255, 0.12), transparent 26%),
+      linear-gradient(180deg, #090d16 0%, #111827 54%, #0b1020 100%);
+    --surface-hero: rgba(255, 255, 255, 0.03);
+    --surface-panel: rgba(255, 255, 255, 0.04);
+    --surface-panel-strong: rgba(255, 255, 255, 0.06);
+    --surface-elevated: rgba(9, 13, 22, 0.72);
+    --surface-soft: rgba(255, 255, 255, 0.05);
+    --surface-icon: rgba(0, 0, 0, 0.3);
+    --border-soft: rgba(255, 255, 255, 0.1);
+    --border-strong: rgba(255, 255, 255, 0.16);
+    --heading: #ffffff;
+    --body-text: #cbd5e1;
+    --muted-text: #94a3b8;
+    --badge-text: #e0e7ff;
+    --badge-bg: rgba(99, 123, 255, 0.1);
+    --badge-border: rgba(165, 180, 252, 0.2);
+    --shadow-panel: 0 24px 80px rgba(2, 6, 23, 0.35);
+    --shadow-hero: 0 30px 80px rgba(2, 6, 23, 0.65);
+    --nav-bg: rgba(9, 13, 22, 0.72);
+    --nav-link: rgba(226, 232, 240, 0.92);
+    --nav-link-hover: #ffffff;
+    --nav-hover-bg: rgba(99, 123, 255, 0.16);
+    --nav-active-bg: rgba(99, 123, 255, 0.18);
+    --section-about-bg: radial-gradient(circle at top left, rgba(99, 123, 255, 0.14), transparent 24%), linear-gradient(180deg, #0a0f18 0%, #131b29 52%, #0b1020 100%);
+    --section-project-bg: linear-gradient(180deg, #0a0f18 0%, #131b29 52%, #0a0f18 100%);
+    --section-skills-bg: radial-gradient(circle at top, rgba(99, 123, 255, 0.12), transparent 26%), linear-gradient(180deg, #0a0f18 0%, #111827 55%, #0b1020 100%);
+    --section-education-bg: radial-gradient(circle at top, rgba(99, 123, 255, 0.12), transparent 24%), linear-gradient(180deg, #090d16 0%, #111827 52%, #090d16 100%);
+    --section-contact-bg: radial-gradient(circle at top right, rgba(99, 123, 255, 0.12), transparent 22%), linear-gradient(180deg, #0a0f18 0%, #090d16 60%, #0b1020 100%);
+    --section-services-bg: radial-gradient(circle at top left, rgba(99, 123, 255, 0.14), transparent 24%), linear-gradient(180deg, #0b1020 0%, #0c1321 52%, #090d16 100%);
+    --services-hero-frame: #000000;
+    --services-hero-overlay: radial-gradient(circle at top, rgba(99, 123, 255, 0.16), transparent 30%), linear-gradient(180deg, rgba(5, 8, 20, 0.32) 0%, rgba(5, 8, 20, 0.68) 62%, rgba(5, 8, 20, 0.92) 100%);
+  }
 
+  html[data-theme='light'] {
+    --background: 220 33% 98%;
+    --foreground: 222 47% 14%;
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 14%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 14%;
+    --primary: 226 77% 55%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 220 30% 95%;
+    --secondary-foreground: 222 47% 14%;
+    --muted: 220 26% 93%;
+    --muted-foreground: 222 18% 42%;
+    --accent: 226 77% 55%;
+    --accent-foreground: 0 0% 100%;
+    --border: 220 25% 86%;
+    --input: 220 24% 88%;
+    --ring: 226 77% 55%;
+    --page-bg:
+      radial-gradient(circle at top, rgba(99, 123, 255, 0.09), transparent 24%),
+      linear-gradient(180deg, #f8fbff 0%, #eef3fb 52%, #f7fafd 100%);
+    --surface-hero: rgba(255, 255, 255, 0.82);
+    --surface-panel: rgba(255, 255, 255, 0.74);
+    --surface-panel-strong: rgba(255, 255, 255, 0.9);
+    --surface-elevated: rgba(255, 255, 255, 0.82);
+    --surface-soft: rgba(37, 99, 235, 0.06);
+    --surface-icon: rgba(255, 255, 255, 0.85);
+    --border-soft: rgba(148, 163, 184, 0.28);
+    --border-strong: rgba(99, 123, 255, 0.24);
+    --heading: #122033;
+    --body-text: #334155;
+    --muted-text: #64748b;
+    --badge-text: #3850b6;
+    --badge-bg: rgba(99, 123, 255, 0.1);
+    --badge-border: rgba(99, 123, 255, 0.16);
+    --shadow-panel: 0 24px 60px rgba(148, 163, 184, 0.16);
+    --shadow-hero: 0 28px 60px rgba(148, 163, 184, 0.22);
+    --nav-bg: rgba(255, 255, 255, 0.82);
+    --nav-link: #334155;
+    --nav-link-hover: #122033;
+    --nav-hover-bg: rgba(99, 123, 255, 0.08);
+    --nav-active-bg: rgba(99, 123, 255, 0.14);
+    --section-about-bg: radial-gradient(circle at top left, rgba(99, 123, 255, 0.1), transparent 26%), linear-gradient(180deg, #f9fbff 0%, #eef4fb 52%, #f8fbff 100%);
+    --section-project-bg: linear-gradient(180deg, #f8fbff 0%, #eef4fb 52%, #f8fbff 100%);
+    --section-skills-bg: radial-gradient(circle at top, rgba(99, 123, 255, 0.08), transparent 26%), linear-gradient(180deg, #f9fbff 0%, #eff4fb 55%, #f8fbff 100%);
+    --section-education-bg: radial-gradient(circle at top, rgba(99, 123, 255, 0.08), transparent 24%), linear-gradient(180deg, #f8fbff 0%, #edf3fb 52%, #f8fbff 100%);
+    --section-contact-bg: radial-gradient(circle at top right, rgba(99, 123, 255, 0.08), transparent 22%), linear-gradient(180deg, #f8fbff 0%, #eef4fb 60%, #f8fbff 100%);
+    --section-services-bg: radial-gradient(circle at top left, rgba(99, 123, 255, 0.09), transparent 24%), linear-gradient(180deg, #f8fbff 0%, #edf3fb 52%, #f8fbff 100%);
+    --services-hero-frame: #e9eef8;
+    --services-hero-overlay: radial-gradient(circle at top, rgba(99, 123, 255, 0.08), transparent 32%), linear-gradient(180deg, rgba(255, 255, 255, 0.35) 0%, rgba(243, 247, 253, 0.76) 62%, rgba(236, 242, 251, 0.92) 100%);
+  }
 
-body {
-  margin: 0;
-  font-family: sans-serif;
-  background-color: #121212;
-  font-family: 'Poppins', sans-serif;
+  * {
+    @apply border-border;
+    box-sizing: border-box;
+  }
 
+  html {
+    scroll-behavior: smooth;
+  }
 
+  html,
+  body,
+  #root {
+    width: 100%;
+    overflow-x: hidden;
+  }
 
-nav {
-  background-color: #333;
-  color: white;
-  padding: 1rem;
+  body {
+    margin: 0;
+    min-height: 100vh;
+    background: var(--page-bg);
+    color: hsl(var(--foreground));
+    font-family: 'Poppins', sans-serif;
+    text-rendering: optimizeLegibility;
+    transition:
+      background 0.35s ease,
+      color 0.25s ease;
+  }
+
+  a {
+    color: inherit;
+  }
+
+  img,
+  svg,
+  canvas {
+    max-width: 100%;
+  }
+
+  section {
+    scroll-margin-top: 5.5rem;
+  }
 }
+
+@layer components {
+  .theme-heading {
+    color: var(--heading);
+  }
+
+  .theme-body {
+    color: var(--body-text);
+  }
+
+  .theme-muted {
+    color: var(--muted-text);
+  }
+
+  .theme-badge {
+    border-color: var(--badge-border);
+    background: var(--badge-bg);
+    color: var(--badge-text);
+  }
+
+  .theme-chip {
+    border-color: var(--border-soft);
+    background: var(--surface-soft);
+    color: var(--body-text);
+  }
+
+  .theme-panel {
+    border-color: var(--border-soft);
+    background: var(--surface-panel);
+    box-shadow: var(--shadow-panel);
+  }
+
+  .theme-panel-strong {
+    border-color: var(--border-soft);
+    background: var(--surface-panel-strong);
+    box-shadow: var(--shadow-panel);
+  }
+
+  .section-nav-shell {
+    border-color: color-mix(in srgb, var(--border-soft) 72%, transparent);
+    background:
+      linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.025)),
+      var(--surface-elevated);
+    box-shadow:
+      0 18px 55px rgba(2, 6, 23, 0.2),
+      inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  }
+
+  html[data-theme='light'] .section-nav-shell {
+    background:
+      linear-gradient(135deg, rgba(255, 255, 255, 0.88), rgba(248, 251, 255, 0.58)),
+      var(--surface-elevated);
+    box-shadow:
+      0 18px 42px rgba(148, 163, 184, 0.16),
+      inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  }
+
+  .theme-icon-shell {
+    border-color: var(--border-soft);
+    background: var(--surface-icon);
+    color: var(--badge-text);
+  }
+
+  .theme-link-button {
+    color: white;
+  }
+
+  html[data-theme='light'] .theme-link-button {
+    color: #ffffff;
+  }
+
+  .loader {
+    width: 2.75rem;
+    height: 2.75rem;
+    border-radius: 9999px;
+    border: 4px solid rgba(255, 255, 255, 0.18);
+    border-top-color: rgba(255, 255, 255, 0.92);
+    animation: spin 0.9s linear infinite;
+  }
 }
 
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
 }

@@ -12,13 +12,13 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(js|jsx)$/, 
+        test: /\.(js|jsx|ts|tsx)$/,
         exclude: /node_modules/, 
         use: 'babel-loader'
       },
       {
-        test: /\.css$/, 
-        use: ['style-loader', 'css-loader']
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader', 'postcss-loader']
       },
       {
       test: /\.(png|jpe?g|gif|svg)$/i,
@@ -27,7 +27,10 @@ module.exports = {
     ],
   },
   resolve: {
-    extensions: ['.js', '.jsx'],
+    extensions: ['.ts', '.tsx', '.js', '.jsx'],
+    alias: {
+      '@': path.resolve(__dirname, 'src'),
+    },
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -39,5 +42,6 @@ module.exports = {
     port: 3000,
     hot: true,
     open: true,
+    historyApiFallback: true,
   },
 };

@@ -1,29 +1,58 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { Moon, Sun } from 'lucide-react';
+
 import './Navbar.css';
-import Logo from '../assets/logo.png';
 
-const Navbar = () => {
-  const [menuOpen, setMenuOpen] = useState(false);
+const Navbar = ({ theme, onToggleTheme }) => {
+  const handleNavigate = (event, targetPage) => {
+    event.preventDefault();
 
-  const toggleMenu = () => {
-    setMenuOpen(prev => !prev);
+    const params = new URLSearchParams(window.location.search);
+    const currentPage = params.get('page') === 'services' ? 'services' : 'home';
+
+    if (currentPage === targetPage) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      return;
+    }
+
+    const nextUrl =
+      targetPage === 'services'
+        ? `${window.location.pathname}?page=services`
+        : window.location.pathname;
+
+    window.history.pushState({}, '', nextUrl);
+    window.dispatchEvent(new Event('app:navigate'));
   };
 
+  const params = new URLSearchParams(window.location.search);
+  const isServicesPage = params.get('page') === 'services';
+
   return (
-    <nav className="navbar">
-      <img src = {Logo} className="logo"/>
-      <div className={`nav-links ${menuOpen ? 'active' : ''}`}>
-        <a href="#home">Home</a>
-        <a href="#about">About</a>
-        <a href="#skills">Skills</a>
-        <a href="#education">Education</a>
-        <a href="#contact">Contact</a>
-        
-      </div>
-      <div className={`hamburger ${menuOpen ? 'toggle' : ''}`} onClick={toggleMenu}>
-        <div className="line1"></div>
-        <div className="line2"></div>
-        <div className="line3"></div>
+    <nav className="navbar" aria-label="Primary">
+      <div className="site-nav">
+        <a
+          href="/"
+          className={`site-nav-link ${!isServicesPage ? 'active' : ''}`}
+          onClick={(event) => handleNavigate(event, 'home')}
+        >
+          Home
+        </a>
+        <a
+          href="/?page=services"
+          className={`site-nav-link ${isServicesPage ? 'active' : ''}`}
+          onClick={(event) => handleNavigate(event, 'services')}
+        >
+          Services
+        </a>
+        <button
+          type="button"
+          className="theme-toggle"
+          onClick={onToggleTheme}
+          aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
+          title={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+        >
+          {theme === 'dark' ? <Sun size={16} /> : <Moon size={16} />}
+        </button>
       </div>
     </nav>
   );

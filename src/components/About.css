@@ -17,3 +17,18 @@
   font-size: 1.2rem;
   line-height: 1.6;
 }
+
+@media (max-width: 768px) {
+  .about {
+    padding: 3rem 1.25rem;
+  }
+
+  .about h2 {
+    font-size: 2rem;
+  }
+
+  .about p {
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+}
